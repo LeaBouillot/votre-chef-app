@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import "./Category.css";
 
 const API_URL = "http://localhost:3000/recipes";
@@ -58,9 +58,12 @@ const Category: React.FC = () => {
         <div className="recipe-grid">
           {recipes.map(recipe => (
             <div key={recipe.id} className="recipe-card">
+                            <Link to={`/detail/${recipe.id}`}>
               <img src={recipe.image} alt={recipe.title} />
               <h2>{recipe.title}</h2>
+              </Link>
             </div>
+
           ))}
         </div>
       ) : (

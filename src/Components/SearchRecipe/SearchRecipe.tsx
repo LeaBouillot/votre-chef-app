@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./SearchRecipe.css";
-import FavoriteRecipe from "../FavoriteRecipe/FavoriteRecipe";
 
 interface Recipe {
   id: number;
@@ -93,10 +92,6 @@ const SearchRecipe = () => {
             </div>
           ))}
         </div>
-        {/* <FavoriteRecipe 
-          favorites={favorites} 
-          onRemoveFavorite={removeFavorite} 
-        /> */}
       </div>
     </div>
   );

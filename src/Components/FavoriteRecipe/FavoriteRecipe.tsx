@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Recipe } from "../types";
+import "./FavoriteRecipe.css";
 
 type Props = {
-  id: string
+  id: string;
   title: string;
   recipe: Recipe | null;
   onFavorite: (id: string) => void;
@@ -10,6 +12,7 @@ type Props = {
 
 const FavoriteRecipe: React.FC = () => {
   const [favorites, setFavorites] = useState<Props[]>([]);
+    const navigate = useNavigate();
 
   useEffect(() => {
     const storedFavorites = localStorage.getItem("favorites");
@@ -24,14 +27,37 @@ const FavoriteRecipe: React.FC = () => {
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
   };
 
+  const openRecipeDetail = (id: string) => {
+    window.open(`/detail/${id}`, '_blank');
+  };
+
   return (
-    <div>
-      <h3>Favorites</h3>
-      <ul>
+    <div className="fav-container">
+      <button onClick={() => navigate(-1)} className="back-button">
+        Back to Recipes
+      </button>
+      <h3 className="fav-titre">Favorites</h3>
+      <ul className="favorites-list">
         {favorites.map((recipe) => (
-          <li key={recipe.id}>
-            {recipe.title}
-            <button onClick={() => removeFavorite(recipe.id)}>Remove</button>
+          <li key={recipe.id} className="favorite-item">
+            <div className="recipe-content">
+              <h4>{recipe.title}</h4>
+              <img src={recipe.image} alt={recipe.title} className="recipe-image" />
+              <div className="recipe-actions">
+                <button
+                  onClick={() => removeFavorite(recipe.id)}
+                  className="delete-btn"
+                >
+                  Supprimer
+                </button>
+                <button
+                  className="detail-btn"
+                  onClick={() => openRecipeDetail(recipe.id)}
+                >
+                  Voir détail
+                </button>
+              </div>
+            </div>
           </li>
         ))}
       </ul>

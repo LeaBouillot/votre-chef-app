@@ -132,10 +132,10 @@
 }
 
 .nav-login button {
-  background-color: #d94e4e;
+  background-color: #ff6b6b;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 20px;
   padding: 0.6rem 1.5rem;
   font-weight: 500;
   cursor: pointer;

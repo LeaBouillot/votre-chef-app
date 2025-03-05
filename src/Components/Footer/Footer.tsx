@@ -1,42 +1,31 @@
+import React from "react";
+import { Link } from "react-router-dom";
 import "./Footer.css";
+import logo from "../assets/logo-chef.png";
 
-function Footer() {
+const Footer: React.FC = () => {
   return (
-    <>
-      <footer id="footer">
-        <div className="container">
-          <h3>Votre Chef App</h3>
-          <p>
-            Découvrez les meilleures recettes de cuisine adaptées à vos goûts.
-          </p>
-          <div className="social-links">
-            <a href="#" className="twitter">
-              <i className="bx bxl-twitter"></i>
-            </a>
-            <a href="#" className="facebook">
-              <i className="bx bxl-facebook"></i>
-            </a>
-            <a href="#" className="instagram">
-              <i className="bx bxl-instagram"></i>
-            </a>
-            <a href="#" className="google-plus">
-              <i className="bx bxl-skype"></i>
-            </a>
-            <a href="#" className="linkedin">
-              <i className="bx bxl-linkedin"></i>
-            </a>
-          </div>
-          <div className="copyright">
-            &copy; Copyright{" "}
-            <strong>
-              <span>Léa</span>
-            </strong>
-            . All Rights Reserved
-          </div>
+    <footer className="footer">
+      <div className="footer-content">
+        <div className="footer-logo">
+          <img src={logo} alt="logo" width={60} />
+          <p>Meilleurs Recettes</p>
         </div>
-      </footer>
-    </>
+        
+        <div className="footer-links">
+          <Link to="/">Recettes</Link>
+          <Link to="/add-recipe">Ajouter</Link>
+          <Link to="/favorites">Favoris</Link>
+          <Link to="/about">À propos</Link>
+          <Link to="/contact">Contact</Link>
+        </div>
+      </div>
+      
+      <div className="footer-bottom">
+        <p>© {new Date().getFullYear()} Léa Bouillot - Tous droits réservés</p>
+      </div>
+    </footer>
   );
-}
+};
 
 export default Footer;

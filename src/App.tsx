@@ -6,6 +6,7 @@ import RecipeDetail from "./Components/RecipeDetail/RecipeDetail";
 import FavoriteRecipe from "./Components/FavoriteRecipe/FavoriteRecipe";
 import RecipeForm from "./Components/RecipeForm/RecipeForm";
 import Category from "./Components/Category/Category";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
         <Route path="/add-recipe" element={<RecipeForm />} />
         <Route path="/favorites" element={<FavoriteRecipe />} />
       </Routes>
+      <Footer />
+  
     </>
   );
 }

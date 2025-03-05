@@ -1,30 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import logo from "../assets/logo-chef.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
-// import user_icon from "../assets/user.png";
+const categories = [
+  "Entrées",
+  "Plats", 
+  "Desserts", 
+  "Français", 
+  "Italien", 
+  "Asiatique"
+];
+
 const Header: React.FC = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   return (
     <div className="header">
       <div className="nav-logo">
         <img src={logo} alt="logo" width={100} />
         <p>Meilleurs Recettes</p>
       </div>
-
-      <nav>
+      
+      <nav className="main-nav">
         <ul className="nav-list">
           <li>
-            <Link to="/">Recettes</Link>
+            <NavLink to="/" end>Recettes</NavLink>
+          </li>
+          <li 
+            onMouseEnter={() => setIsDropdownOpen(true)}
+            onMouseLeave={() => setIsDropdownOpen(false)}
+          >
+            <span>Categories</span>
+            {isDropdownOpen && (
+              <ul className="dropdown-menu">
+                {categories.map((category) => (
+                  <li key={category}>
+                    <Link to={`/recipes/${category.toLowerCase()}`}>
+                      {category}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
           </li>
           <li>
-            <Link to="/add-recipe">Ajouter Recette</Link>
+            <NavLink to="/add-recipe">Ajouter Recette</NavLink>
           </li>
           <li>
-            <Link to="/favorites">Favoris</Link>
+            <NavLink to="/favorites">Favoris</NavLink>
           </li>
         </ul>
       </nav>
+      
       <div className="nav-login">
         <Link to="/login">
           <button>Connexion</button>

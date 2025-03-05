@@ -1,84 +1,95 @@
 .fav-container {
- max-width: 1000px;
-margin: 0 auto;
-padding: 20px;
-background-color: #f9f9f9;
-border-radius: 10px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
 }
+
 .fav-titre {
-text-align: center;
-color: #333;
-font-size: 1.8em;
-margin-bottom: 25px;
-padding-bottom: 10px;
-border-bottom: 2px solid #e0e0e0;
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
 }
-.fav-container ul {
-list-style-type: none;
-padding: 0;
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-gap: 20px;
+
+.favorites-list {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
 }
-.fav-container li {
-background-color: white;
-border-radius: 8px;
-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-overflow: hidden;
-transition: transform 0.3s ease;
-display: flex;
-flex-direction: column;
+
+.favorite-item {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-.fav-container li:hover {
-transform: scale(1.05);
+
+.recipe-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
-.fav-container li img {
-width: 100%;
-height: 250px;
-object-fit: cover;
+
+.recipe-content h4 {
+  margin-bottom: 10px;
+  color: #333;
 }
-.fav-container li button {
-background-color: #ff4d4d;
-color: white;
-border: none;
-padding: 10px;
-margin: 10px;
-border-radius: 5px;
-cursor: pointer;
-transition: background-color;
+
+.recipe-image {
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
 }
+
 .recipe-actions {
-display: flex;
-gap: 10px;
-width: 100%;
-justify-content: center;
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
 }
+
 .delete-btn {
-background-color: #ff4d4d;
-color: white;
-border: none;
-padding: 20px 15px;
-border-radius: 5px;
-cursor: pointer;
-transition: background-color 0.3s ease;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
+
 .delete-btn:hover {
-background-color: #ff3333;
+  background-color: #ff3333;
 }
+
 .detail-btn {
-background-color: white;
-color: #ff4d4d;
-border: 2px solid #ff4d4d;
-padding: 20px 15px;
-border-radius: 5px;
-cursor: pointer;
-transition: all 0.3s ease;
-font-weight: bold;
+  background-color: white;
+  color: #ff3333;
+  border: 2px solid #ff3333;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
+
 .detail-btn:hover {
-background-color: #ff4d4d;
-color: white;
+  background-color: #ff3333;
+  color: white;
 }
+
 .detail-link {
-text-decoration: none;
+  text-decoration: none;
+}
+
+.retour-btn {
+  background-color: white;
+  color: #4051ed;
+  border: 2px solid #4051ed;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }

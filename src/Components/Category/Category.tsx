@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import "./Category.css";
 
 const API_URL = "http://localhost:3000/recipes";
 
@@ -8,7 +9,6 @@ interface Recipe {
   title: string;
   image: string;
   category: string;
-  // Add other recipe properties as needed
 }
 
 const Category: React.FC = () => {
@@ -53,7 +53,7 @@ const Category: React.FC = () => {
 
   return (
     <div className="category-page">
-      <h1>Recettes - {category}</h1>
+      <h2>Recettes  {category}</h2>
       {recipes.length > 0 ? (
         <div className="recipe-grid">
           {recipes.map(recipe => (

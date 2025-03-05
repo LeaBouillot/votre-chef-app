@@ -33,9 +33,9 @@ const FavoriteRecipe: React.FC = () => {
 
   return (
     <div className="fav-container">
-      <button onClick={() => navigate(-1)} className="back-button">
-        Back to Recipes
-      </button>
+      {/* <button onClick={() => navigate(-1)} className="back-button">
+        Retour
+      </button> */}
       <h2 className="fav-titre">Favorites</h2>
       <ul className="favorites-list">
         {favorites.map((recipe) => (

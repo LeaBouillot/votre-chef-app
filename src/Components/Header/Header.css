@@ -1,19 +1,29 @@
+/* Header.css amélioré */
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 15px 5%;
-  background-color: #ffffff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #fff;
   position: sticky;
   top: 0;
   z-index: 100;
+  max-width: 1240px;
+  margin: 0 auto;
+  border-bottom: 1px solid #e0e0e0; /* Trait gris en bas du header */
 }
 
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 0.75rem;
+}
+
+.nav-logo p {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #d94e4e;
+  margin: 0;
 }
 
 .nav-logo img {
@@ -21,126 +31,64 @@
 }
 
 .nav-logo img:hover {
-  transform: scale(1.05) rotate(5deg);
+  transform: scale(1.05);
 }
 
-.nav-logo p {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #2c3e50;
-  letter-spacing: -0.5px;
+.main-nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .nav-list {
   display: flex;
   list-style: none;
-  gap: 30px;
   margin: 0;
   padding: 0;
+  gap: 2rem;
 }
 
-.nav-list li a {
-  text-decoration: none;
-  color: #34495e;
-  font-weight: 500;
+.nav-list li {
   position: relative;
-  transition: color 0.3s ease;
-  padding: 10px 0;
 }
 
-.nav-list li a::after {
+.nav-list a, 
+.nav-list span {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.nav-list a:hover, 
+.nav-list span:hover,
+.nav-list a.active {
+  color: #d94e4e;
+}
+
+.nav-list a::after,
+.nav-list span::after {
   content: '';
   position: absolute;
+  bottom: 0;
+  left: 0;
   width: 0;
   height: 2px;
-  bottom: 0;
-  left: 50%;
-  background-color: #3498db;
-  transition: all 0.3s ease;
+  background-color: #d94e4e;
+  transition: width 0.3s ease;
 }
 
-.nav-list li a:hover {
-  color: #3498db;
-}
-
-.nav-list li a:hover::after {
+.nav-list a:hover::after,
+.nav-list span:hover::after,
+.nav-list a.active::after {
   width: 100%;
-  left: 0;
 }
 
-.nav-login button {
-  background-color: #3498db;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(52, 152, 219, 0.2);
-}
-
-.nav-login button:hover {
-  background-color: #2980b9;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 8px rgba(52, 152, 219, 0.3);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    padding: 15px 3%;
-    gap: 15px;
-  }
-
-  .nav-logo {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .nav-list {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-  }
-
-  .nav-login {
-    margin-top: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  .nav-logo p {
-    font-size: 1.2rem;
-  }
-
-  .nav-list {
-    width: 100%;
-  }
-
-  .nav-list li a {
-    display: block;
-    text-align: center;
-    width: 100%;
-  }
-}
-
-/* Active link style */
-.nav-list li a.active {
-  color: #3498db;
-  font-weight: bold;
-}
-
-.main-nav {
-  position: relative;
-}
-
-.nav-list > li {
-  position: relative;
-}
-
+/* Utilisation exacte du style de dropdown demandé */
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -152,6 +100,17 @@
   padding: 10px 0;
   z-index: 1000;
   animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .dropdown-menu li {
@@ -172,30 +131,46 @@
   color: #3498db;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Ajout au CSS existant de Header */
-.nav-list > li > span {
+.nav-login button {
+  background-color: #d94e4e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.5rem;
+  font-weight: 500;
   cursor: pointer;
-  position: relative;
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-.nav-list > li > span::after {
-  content: '▼';
-  font-size: 0.7em;
-  margin-left: 5px;
-  transition: transform 0.3s ease;
+.nav-login button:hover {
+  background-color: #c13e3e;
+  transform: translateY(-2px);
 }
 
-.nav-list > li:hover > span::after {
-  transform: rotate(180deg);
+.nav-login button:active {
+  transform: translateY(0);
+}
+
+/* Media queries pour la responsivité */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .nav-list {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .nav-logo p {
+    font-size: 1.2rem;
+  }
+  
+  .dropdown-menu {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }

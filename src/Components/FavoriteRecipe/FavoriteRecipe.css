@@ -25,6 +25,11 @@ h2::after {
   border-radius: 2px;
 }
 
+/* .back-button{
+  background-color: white;
+  color: #9facff;
+  border: 2px solid #9facff;
+} */
 .favorites-list {
   list-style-type: none;
   padding: 0;
@@ -54,7 +59,7 @@ h2::after {
 
 .recipe-image {
   max-width: 300px;
-  height: auto;
+  height: 250px;
   border-radius: 8px;
   margin-bottom: 15px;
 }
@@ -67,7 +72,7 @@ h2::after {
 }
 
 .delete-btn {
-  background-color: #ff4d4d;
+  background-color: #ff6b6b;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -82,8 +87,8 @@ h2::after {
 
 .detail-btn {
   background-color: white;
-  color: #ff3333;
-  border: 2px solid #ff3333;
+  color: #ff6b6b;
+  border: 2px solid #ff6b6b;
   padding: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
@@ -91,7 +96,7 @@ h2::after {
 }
 
 .detail-btn:hover {
-  background-color: #ff3333;
+  background-color: #ff6b6b;
   color: white;
 }
 

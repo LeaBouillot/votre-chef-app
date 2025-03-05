@@ -82,7 +82,7 @@ const RecipeDetail = () => {
 
   return (
     <div className="recipe-detail">
-      <h1>{details.title}</h1>
+      <h2>{details.title}</h2>
       <div className="recipe-image-container">
         <img src={details.image} alt={details.title} className="recipe-image" />
       </div>

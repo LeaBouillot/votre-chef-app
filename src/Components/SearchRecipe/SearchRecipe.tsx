@@ -93,10 +93,10 @@ const SearchRecipe = () => {
             </div>
           ))}
         </div>
-        <FavoriteRecipe 
+        {/* <FavoriteRecipe 
           favorites={favorites} 
           onRemoveFavorite={removeFavorite} 
-        />
+        /> */}
       </div>
     </div>
   );

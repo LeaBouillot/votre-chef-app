@@ -1,204 +1,203 @@
 .recipe-detail {
-    max-width: 900px;
-    margin: 40px auto; /* Augmenté de 0 auto à 40px auto */
-    padding: 30px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-   }
-  
-  .recipe-detail h1 {
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2.8em;
-    font-weight: 700;
-    position: relative;
-    padding-bottom: 15px;
-  }
-  
-  .recipe-detail h1::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(to right, #ff6b6b, #4ecdc4);
-    border-radius: 2px;
-  }
-  
-  .recipe-image-container {
-    width: 100%;
-    max-height: 500px; /* Use max-height instead of fixed height */
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    margin-bottom: 30px;
-    position: relative;
-    display: flex; /* Use flexbox for better centering */
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .recipe-image {
-    width: 100%; /* Ensure full width */
-    height: auto; /* Allow height to adjust proportionally */
-    max-height: 500px; /* Limit maximum height */
-    object-fit: cover;
-    object-position: center;
-    transition: transform 0.3s ease;
-  }
-  
-  .recipe-image-container:hover .recipe-image {
-    transform: scale(1.05);
-  }
-  
+  max-width: 900px;
+  margin: 40px auto; /* Augmenté de 0 auto à 40px auto */
+  padding: 30px;
+}
+.form-row-wide-gap {
+  gap: 30px;
+}
+.recipe-detail h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ff6b6b;
+  position: relative;
+}
+
+.recipe-detail h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background-color: var(--secondary-color);
+  border-radius: 2px;
+}
+
+.recipe-image-container {
+  width: 100%;
+  max-height: 500px; /* Use max-height instead of fixed height */
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  margin-bottom: 30px;
+  position: relative;
+  display: flex; /* Use flexbox for better centering */
+  justify-content: center;
+  align-items: center;
+}
+
+.recipe-image {
+  width: 100%; /* Ensure full width */
+  height: auto; /* Allow height to adjust proportionally */
+  max-height: 500px; /* Limit maximum height */
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.recipe-image-container:hover .recipe-image {
+  transform: scale(1.05);
+}
+
+.recipe-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  border: 1px solid #e9ecef;
+}
+
+.recipe-meta p {
+  margin: 0;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  color: #495057;
+  display: flex;
+  align-items: center;
+}
+
+.meta-icon {
+  margin-right: 10px;
+  color: #4ecdc4;
+  width: 20px;
+  height: 20px;
+}
+
+.recipe-meta p strong {
+  color: #2c3e50;
+  margin-right: 10px;
+  min-width: 120px;
+}
+
+.recipe-description {
+  font-size: 1.1em;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #f1f3f5;
+  border-radius: 10px;
+  border-left: 5px solid #4ecdc4;
+}
+
+.ingredients-list {
+  background-color: #f9f9f9;
+  padding: 15px 30px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  column-count: 2;
+  column-gap: 30px;
+}
+
+.ingredients-list li {
+  margin-bottom: 10px;
+  line-height: 1.5;
+  color: #333;
+  break-inside: avoid-column;
+  page-break-inside: avoid;
+}
+
+.instructions-list {
+  background-color: #f9f9f9;
+  padding: 15px 30px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.instructions-list li {
+  margin-bottom: 10px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.back-button,
+.favorite-button {
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: #4ecdc4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 10px rgba(78, 205, 196, 0.3);
+}
+
+.back-button {
+  background-color: #2196f3;
+  margin-right: 15px;
+}
+
+.back-button:hover,
+.favorite-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.back-button:active,
+.favorite-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
   .recipe-meta {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 12px;
-    margin-bottom: 30px;
-    border: 1px solid #e9ecef;
+    grid-template-columns: 1fr 1fr;
   }
-  
-  .recipe-meta p {
-    margin: 0;
-    padding: 10px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    color: #495057;
-    display: flex;
-    align-items: center;
+
+  .recipe-detail {
+    margin: 30px auto; /* Marge légèrement réduite sur mobile */
   }
-  
-  .meta-icon {
-    margin-right: 10px;
-    color: #4ecdc4;
-    width: 20px;
-    height: 20px;
+
+  .recipe-image-container {
+    max-height: 300px;
   }
-  
-  .recipe-meta p strong {
-    color: #2c3e50;
-    margin-right: 10px;
-    min-width: 120px;
+
+  .recipe-image {
+    max-height: 300px;
   }
-  
-  .recipe-description {
-    font-size: 1.1em;
-    line-height: 1.7;
-    color: #333;
-    margin-bottom: 30px;
-    padding: 20px;
-    background-color: #f1f3f5;
-    border-radius: 10px;
-    border-left: 5px solid #4ecdc4;
+
+  .recipe-detail h1 {
+    font-size: 2.2em;
   }
-  
+
   .ingredients-list {
-    background-color: #f9f9f9;
-    padding: 15px 30px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    column-count: 2;
-    column-gap: 30px;
+    column-count: 1;
   }
-  
-  .ingredients-list li {
-    margin-bottom: 10px;
-    line-height: 1.5;
-    color: #333;
-    break-inside: avoid-column;
-    page-break-inside: avoid;
+}
+
+@media (max-width: 480px) {
+  .recipe-meta {
+    grid-template-columns: 1fr;
   }
-  
-  .instructions-list {
-    background-color: #f9f9f9;
-    padding: 15px 30px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+  .recipe-detail {
+    margin: 20px auto; /* Encore réduite sur très petit écran */
   }
-  
-  .instructions-list li {
-    margin-bottom: 10px;
-    line-height: 1.5;
-    color: #333;
-  }
-  
   .back-button,
   .favorite-button {
-    display: inline-block;
-    padding: 12px 20px;
-    background-color: #4ecdc4;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 10px rgba(78, 205, 196, 0.3);
+    width: 100%;
+    margin-bottom: 10px;
   }
-  
-  .back-button {
-    background-color: #2196F3;
-    margin-right: 15px;
-  }
-  
-  .back-button:hover,
-  .favorite-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-  }
-  
-  .back-button:active,
-  .favorite-button:active {
-    transform: translateY(-1px);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  @media (max-width: 768px) {
-    .recipe-meta {
-      grid-template-columns: 1fr 1fr;
-    }
-  
-    .recipe-detail {
-      margin: 30px auto; /* Marge légèrement réduite sur mobile */
-   }
-  
-  
-    .recipe-image-container {
-      max-height: 300px;
-    }
-    
-    .recipe-image {
-      max-height: 300px;
-    }
-  
-    .recipe-detail h1 {
-      font-size: 2.2em;
-    }
-  
-    .ingredients-list {
-      column-count: 1;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .recipe-meta {
-      grid-template-columns: 1fr;
-    }
-    .recipe-detail {
-      margin: 20px auto; /* Encore réduite sur très petit écran */
-   }
-    .back-button,
-    .favorite-button {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-  }
+}

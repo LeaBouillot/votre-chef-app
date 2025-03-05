@@ -26,14 +26,15 @@ const FavoriteRecipe: React.FC = () => {
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
   };
 
+  const openRecipeDetail = (id: string) => {
+    window.open(`/detail/${id}`, '_blank');
+  };
+
   return (
     <div className="fav-container">
-      {/* ajoute bouton retour */}
-
       <Link to={`/`}>
-                  <button className="retour-btn">Retour</button>
-                </Link>
-    
+        <button className="retour-btn">Retour</button>
+      </Link>
       <h3 className="fav-titre">Favorites</h3>
       <ul className="favorites-list">
         {favorites.map((recipe) => (
@@ -42,15 +43,18 @@ const FavoriteRecipe: React.FC = () => {
               <h4>{recipe.title}</h4>
               <img src={recipe.image} alt={recipe.title} className="recipe-image" />
               <div className="recipe-actions">
-                <button 
-                  onClick={() => removeFavorite(recipe.id)} 
+                <button
+                  onClick={() => removeFavorite(recipe.id)}
                   className="delete-btn"
                 >
                   Supprimer
                 </button>
-                <Link to={`/detail/${recipe.id}`} className="detail-link">
-                  <button className="detail-btn">Voir détail</button>
-                </Link>
+                <button
+                  className="detail-btn"
+                  onClick={() => openRecipeDetail(recipe.id)}
+                >
+                  Voir détail
+                </button>
               </div>
             </div>
           </li>

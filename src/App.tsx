@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<SearchRecipe />} />
         <Route path="/recipes/:category" element={<Category />} />
-        <Route path="/recipe/:id" element={<RecipeDetail />} />
+        <Route path="//detail/:id" element={<RecipeDetail />} /> 
         <Route path="/add-recipe" element={<RecipeForm />} />
         <Route path="/favorites" element={<FavoriteRecipe />} />
       </Routes>
@@ -23,3 +23,4 @@ function App() {
 }
 
 export default App;
+

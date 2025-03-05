@@ -1,7 +1,14 @@
 import React from "react";
 import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
-import './RecipeDetail.css';
+import { 
+  FaTag, 
+  FaFire, 
+  FaEuroSign, 
+  FaClock, 
+  FaUsers 
+} from "react-icons/fa";
+import "./RecipeDetail.css";
 
 interface Details {
   id: number;
@@ -19,7 +26,6 @@ interface Details {
 
 const RecipeDetail = () => {
   const { id } = useParams<{ id: string }>();
-  // const navigate = useNavigate();
   const [details, setDetails] = useState<Details | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -28,17 +34,26 @@ const RecipeDetail = () => {
     try {
       setIsLoading(true);
       const response = await fetch(`http://localhost:3000/recipes/${id}`);
-      
       if (!response.ok) {
-        throw new Error('Failed to fetch recipe details');
+        throw new Error("Failed to fetch recipe details");
       }
-      
       const data: Details = await response.json();
-      setDetails(data);
+      
+      // Clean up instruction text by removing the numbering if it exists
+      const cleanedInstructions = data.instructions.map(instruction =>
+        instruction.replace(/^\d+-/, '')
+      );
+      
+      setDetails({
+        ...data,
+        instructions: cleanedInstructions
+      });
       setError(null);
     } catch (error) {
       console.error(error);
-      setError(error instanceof Error ? error.message : 'An unknown error occurred');
+      setError(
+        error instanceof Error ? error.message : "An unknown error occurred"
+      );
       setDetails(null);
     } finally {
       setIsLoading(false);
@@ -50,8 +65,7 @@ const RecipeDetail = () => {
   }, [fetchData]);
 
   const onFavorite = () => {
-    // Implement favorite functionality
-    console.log('Add to favorites:', details?.id);
+    console.log("Add to favorites:", details?.id);
   };
 
   if (isLoading) {
@@ -68,46 +82,47 @@ const RecipeDetail = () => {
 
   return (
     <div className="recipe-detail">
-      {/* <button onClick={() => navigate(-1)} className="back-button">
-        Back to Recipes
-      </button> */}
-      
       <h1>{details.title}</h1>
-      
       <div className="recipe-image-container">
-        <img 
-          src={details.image} 
-          alt={details.title} 
-          className="recipe-image"
-        />
+        <img src={details.image} alt={details.title} className="recipe-image" />
       </div>
-      
       <div className="recipe-meta">
-        <p><strong>Catégorie:</strong> {details.category}</p>
-        <p><strong>Difficulté:</strong> {details.difficulty}</p>
-        <p><strong>Prix:</strong> {details.price}</p>
-        <p><strong>Temps de préparation:</strong> {details.time} minutes</p>
-        <p><strong>Nombre de servings:</strong> {details.number_servings}</p>
+        <p>
+          <FaTag className="meta-icon" />
+          <strong>Catégorie:</strong> {details.category}
+        </p>
+        <p>
+          <FaFire className="meta-icon" />
+          <strong>Difficulté:</strong> {details.difficulty}
+        </p>
+        <p>
+          <FaEuroSign className="meta-icon" />
+          <strong>Prix:</strong> {details.price}
+        </p>
+        <p>
+          <FaClock className="meta-icon" />
+          <strong>Temps de préparation:</strong> {details.time} minutes
+        </p>
+        <p>
+          <FaUsers className="meta-icon" />
+          <strong>Nombre de servings:</strong> {details.number_servings}
+        </p>
       </div>
-      
       <p className="recipe-description">{details.description}</p>
-      
       <h2>Ingrédients:</h2>
       <ul className="ingredients-list">
         {details.ingredients.map((ingredient, index) => (
           <li key={`ingredient-${index}`}>{ingredient}</li>
         ))}
       </ul>
-      
       <h2>Instructions:</h2>
       <ol className="instructions-list">
         {details.instructions.map((instruction, index) => (
           <li key={`instruction-${index}`}>{instruction}</li>
         ))}
       </ol>
-      
       <button onClick={onFavorite} className="favorite-button">
-        Add to Favorites
+        Ajouter aux Favorites
       </button>
     </div>
   );

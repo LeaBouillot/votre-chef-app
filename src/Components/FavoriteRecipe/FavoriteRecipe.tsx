@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Recipe } from "../types";
 import "./FavoriteRecipe.css";
 
@@ -12,6 +12,7 @@ type Props = {
 
 const FavoriteRecipe: React.FC = () => {
   const [favorites, setFavorites] = useState<Props[]>([]);
+    const navigate = useNavigate();
 
   useEffect(() => {
     const storedFavorites = localStorage.getItem("favorites");
@@ -32,9 +33,9 @@ const FavoriteRecipe: React.FC = () => {
 
   return (
     <div className="fav-container">
-      <Link to={`/`}>
-        <button className="retour-btn">Retour</button>
-      </Link>
+      <button onClick={() => navigate(-1)} className="back-button">
+        Back to Recipes
+      </button>
       <h3 className="fav-titre">Favorites</h3>
       <ul className="favorites-list">
         {favorites.map((recipe) => (

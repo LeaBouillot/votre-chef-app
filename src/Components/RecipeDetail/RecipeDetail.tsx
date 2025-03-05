@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect, useCallback } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import './RecipeDetail.css';
 
 interface Details {
@@ -19,7 +19,7 @@ interface Details {
 
 const RecipeDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [details, setDetails] = useState<Details | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -68,9 +68,9 @@ const RecipeDetail = () => {
 
   return (
     <div className="recipe-detail">
-      <button onClick={() => navigate(-1)} className="back-button">
+      {/* <button onClick={() => navigate(-1)} className="back-button">
         Back to Recipes
-      </button>
+      </button> */}
       
       <h1>{details.title}</h1>
       

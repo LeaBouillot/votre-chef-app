@@ -19,6 +19,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 7rem;
+  margin-top: 2rem;
 }
 
 .recipe-list h2 {
@@ -46,7 +48,7 @@ input[name="search"] {
   width: 100%;
   max-width: 600px;
   padding: 10px 15px;
-  margin-bottom: 20px;
+  margin-bottom: 3rem;
   border: 2px solid #ddd;
   border-radius: 25px;
   font-size: 1rem;

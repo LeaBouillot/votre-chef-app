@@ -1,13 +1,6 @@
-import React from "react";
 import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
-import { 
-  FaTag, 
-  FaFire, 
-  FaEuroSign, 
-  FaClock, 
-  FaUsers 
-} from "react-icons/fa";
+import { FaTag, FaFire, FaEuroSign, FaClock, FaUsers } from "react-icons/fa";
 import "./RecipeDetail.css";
 
 interface Details {
@@ -38,15 +31,15 @@ const RecipeDetail = () => {
         throw new Error("Failed to fetch recipe details");
       }
       const data: Details = await response.json();
-      
+
       // Clean up instruction text by removing the numbering if it exists
-      const cleanedInstructions = data.instructions.map(instruction =>
-        instruction.replace(/^\d+-/, '')
+      const cleanedInstructions = data.instructions.map((instruction) =>
+        instruction.replace(/^\d+-/, "")
       );
-      
+
       setDetails({
         ...data,
-        instructions: cleanedInstructions
+        instructions: cleanedInstructions,
       });
       setError(null);
     } catch (error) {

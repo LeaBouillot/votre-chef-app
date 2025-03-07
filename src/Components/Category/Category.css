@@ -17,6 +17,9 @@
   font-family: 'Poppins', sans-serif;
   color: var(--text-color);
   background-color: var(--background-color);
+  min-height: 100vh; /* Ajoutez une hauteur minimale */
+  display: flex;
+  flex-direction: column;
 }
 
 /* Titre de la catégorie */

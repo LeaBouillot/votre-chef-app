@@ -58,12 +58,6 @@ const SearchRecipe = () => {
     }
   };
 
-  const removeFavorite = (id: number) => {
-    const updatedFavorites = favorites.filter((recipe) => recipe.id !== id);
-    setFavorites(updatedFavorites);
-    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-  };
-
   return (
     <div className="container">
       <div className="recipe-list">

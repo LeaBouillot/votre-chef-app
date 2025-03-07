@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Recipe } from "../types";
 import "./FavoriteRecipe.css";
 
 type Props = {
   id: string;
   title: string;
+  image: string; // Ajout de la propriété image manquante
   recipe: Recipe | null;
   onFavorite: (id: string) => void;
 };
 
 const FavoriteRecipe: React.FC = () => {
   const [favorites, setFavorites] = useState<Props[]>([]);
-    const navigate = useNavigate();
 
   useEffect(() => {
     const storedFavorites = localStorage.getItem("favorites");

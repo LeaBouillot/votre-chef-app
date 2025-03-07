@@ -2,6 +2,15 @@
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
+  min-height: 100vh; /* Ajoutez une hauteur minimale */
+  display: flex;
+  flex-direction: column;
+}
+
+.fav-container {
+  min-height: 100vh; /* Ajoutez une hauteur minimale */
+  display: flex;
+  flex-direction: column;
 }
 
  h2 {

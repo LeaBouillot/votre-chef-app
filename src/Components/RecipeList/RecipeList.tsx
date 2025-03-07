@@ -11,7 +11,7 @@ const RecipeList: React.FC<Props> = ({ recipes, onSelect }) => (
     {recipes.map((recipe) => (
       <li
         key={recipe.id}
-        onClick={() => onSelect(recipe.id)}
+        onClick={() => onSelect(String(recipe.id))}
         style={{ cursor: "pointer" }}
       >
         <img src={recipe.image} alt={recipe.title} width="100" />

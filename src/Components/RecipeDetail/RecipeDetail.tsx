@@ -17,6 +17,7 @@ interface Details {
   instructions: string[];
 }
 
+const API_URL = "http://localhost:3000";
 const RecipeDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [details, setDetails] = useState<Details | null>(null);
@@ -26,7 +27,7 @@ const RecipeDetail = () => {
   const fetchData = useCallback(async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(`https://api-recettes-cuisine.vercel.app/${id}`);
+      const response = await fetch(`${API_URL}/recipes/${id}`);
       if (!response.ok) {
         throw new Error("Failed to fetch recipe details");
       }

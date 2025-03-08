@@ -11,9 +11,8 @@ interface Recipe {
 }
 
 const SearchRecipe = () => {
-  // Remplacez cette URL par l'URL de votre déploiement Vercel
-  const API_URL = 'https://api-votre-chef.vercel.app/';
-  
+  // URL de base pour l'API
+  const API_URL = "http://localhost:3000";
   const [query, setQuery] = useState("");
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [favorites, setFavorites] = useState<Recipe[]>([]);
@@ -25,11 +24,9 @@ const SearchRecipe = () => {
       try {
         setLoading(true);
         const response = await fetch(`${API_URL}/recipes`);
-        
         if (!response.ok) {
           throw new Error(`Erreur réseau: ${response.status}`);
         }
-        
         const listRecipes = await response.json();
         setRecipes(listRecipes);
         setError(null);
@@ -53,7 +50,7 @@ const SearchRecipe = () => {
         localStorage.removeItem("favorites"); // Nettoyer les données corrompues
       }
     }
-  }, [API_URL]);
+  }, []);
 
   const filterRecipe = recipes.filter((recipe) =>
     recipe.title.toLowerCase().includes(query.toLowerCase())
@@ -66,7 +63,6 @@ const SearchRecipe = () => {
         alert("Cette recette est déjà dans vos favoris !");
         return;
       }
-      
       // Ajouter aux favoris et sauvegarder dans localStorage
       const updatedFavorites = [...favorites, recipe];
       setFavorites(updatedFavorites);
@@ -90,10 +86,8 @@ const SearchRecipe = () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        
         {loading && <p>Chargement des recettes...</p>}
         {error && <p className="error-message">{error}</p>}
-        
         <div className="liste-recipe">
           {filterRecipe.length > 0 ? (
             filterRecipe.map((recipe) => (

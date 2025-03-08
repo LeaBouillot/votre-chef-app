@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import "./Category.css";
 
-const API_URL = "http://localhost:3000/recipes";
+const API_URL = "https://api-votre-chef.vercel.app/recipes";
 
 interface Recipe {
   id: number;

@@ -9,7 +9,7 @@ interface Recipe {
 }
 
 const SearchRecipe = () => {
-  const API_URL = "http://localhost:3000/recipes";
+  const API_URL = "https://api-votre-chef.vercel.app/recipes";
 
   const [query, setQuery] = useState("");
   const [recipes, setRecipes] = useState<Recipe[]>([]);

@@ -37,7 +37,7 @@ const RecipeForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/recipes", {
+      const response = await fetch("https://api-votre-chef.vercel.app/recipes", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

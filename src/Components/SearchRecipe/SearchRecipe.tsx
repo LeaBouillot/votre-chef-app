@@ -6,36 +6,54 @@ interface Recipe {
   id: number;
   title: string;
   image: string;
+  category?: string;
+  country?: string;
 }
 
 const SearchRecipe = () => {
-  const API_URL = "https://api-votre-chef.vercel.app/recipes";
-
+  // Remplacez cette URL par l'URL de votre déploiement Vercel
+  const API_URL = 'https://api-votre-chef.vercel.app/';
+  
   const [query, setQuery] = useState("");
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [favorites, setFavorites] = useState<Recipe[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const response = await fetch(API_URL);
+        setLoading(true);
+        const response = await fetch(`${API_URL}/recipes`);
+        
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error(`Erreur réseau: ${response.status}`);
         }
+        
         const listRecipes = await response.json();
         setRecipes(listRecipes);
+        setError(null);
       } catch (err) {
-        console.error("Failed to fetch recipes:", err);
+        console.error("Échec du chargement des recettes:", err);
+        setError("Impossible de charger les recettes. Veuillez réessayer plus tard.");
+      } finally {
+        setLoading(false);
       }
     };
+
     fetchRecipes();
 
-    // Load favorites from localStorage
+    // Chargement des favoris depuis localStorage
     const storedFavorites = localStorage.getItem("favorites");
     if (storedFavorites) {
-      setFavorites(JSON.parse(storedFavorites));
+      try {
+        setFavorites(JSON.parse(storedFavorites));
+      } catch (e) {
+        console.error("Erreur lors du chargement des favoris:", e);
+        localStorage.removeItem("favorites"); // Nettoyer les données corrompues
+      }
     }
-  }, []);
+  }, [API_URL]);
 
   const filterRecipe = recipes.filter((recipe) =>
     recipe.title.toLowerCase().includes(query.toLowerCase())
@@ -43,18 +61,20 @@ const SearchRecipe = () => {
 
   const addFavorite = (recipe: Recipe) => {
     try {
-      // Check if recipe is already in favorites
+      // Vérifier si la recette est déjà dans les favoris
       if (favorites.some((fav) => fav.id === recipe.id)) {
         alert("Cette recette est déjà dans vos favoris !");
         return;
       }
-
-      // Add to favorites state and localStorage
+      
+      // Ajouter aux favoris et sauvegarder dans localStorage
       const updatedFavorites = [...favorites, recipe];
       setFavorites(updatedFavorites);
       localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      alert("Recette ajoutée aux favoris !");
     } catch (err) {
-      console.error("Failed to add favorite:", err);
+      console.error("Échec de l'ajout aux favoris:", err);
+      alert("Impossible d'ajouter cette recette aux favoris.");
     }
   };
 
@@ -70,21 +90,29 @@ const SearchRecipe = () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
+        
+        {loading && <p>Chargement des recettes...</p>}
+        {error && <p className="error-message">{error}</p>}
+        
         <div className="liste-recipe">
-          {filterRecipe.map((recipe) => (
-            <div className="recipe" key={recipe.id}>
-              <Link to={`/detail/${recipe.id}`}>
-                <h3>{recipe.title}</h3>
-                <img src={recipe.image} alt={recipe.title} width={300} />
-              </Link>
-              <button
-                className="btn-favorite"
-                onClick={() => addFavorite(recipe)}
-              >
-                Ajouter aux Favoris
-              </button>
-            </div>
-          ))}
+          {filterRecipe.length > 0 ? (
+            filterRecipe.map((recipe) => (
+              <div className="recipe" key={recipe.id}>
+                <Link to={`/detail/${recipe.id}`}>
+                  <h3>{recipe.title}</h3>
+                  <img src={recipe.image} alt={recipe.title} width={300} />
+                </Link>
+                <button
+                  className="btn-favorite"
+                  onClick={() => addFavorite(recipe)}
+                >
+                  Ajouter aux Favoris
+                </button>
+              </div>
+            ))
+          ) : (
+            !loading && <p>Aucune recette trouvée pour "{query}"</p>
+          )}
         </div>
       </div>
     </div>

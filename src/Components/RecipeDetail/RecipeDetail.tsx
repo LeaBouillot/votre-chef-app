@@ -26,7 +26,7 @@ const RecipeDetail = () => {
   const fetchData = useCallback(async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(`https://api-votre-chef.vercel.app/recipes/${id}`);
+      const response = await fetch(`https://api-recettes-cuisine.vercel.app/${id}`);
       if (!response.ok) {
         throw new Error("Failed to fetch recipe details");
       }

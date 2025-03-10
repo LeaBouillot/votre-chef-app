@@ -1,5 +1,4 @@
 # Projet : Application de Recettes de Cuisine
-api: https://recettes-api-olive.vercel.app/api/recettes
 
 
 ## Description Générale

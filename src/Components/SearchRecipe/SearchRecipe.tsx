@@ -12,7 +12,7 @@ interface Recipe {
 
 const SearchRecipe = () => {
   // URL de base pour l'API
-  const API_URL = "http://localhost:3000";
+  const API_URL = "https://recettes-api-olive.vercel.app/api/recettes";
   const [query, setQuery] = useState("");
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [favorites, setFavorites] = useState<Recipe[]>([]);
@@ -23,7 +23,7 @@ const SearchRecipe = () => {
     const fetchRecipes = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`${API_URL}/recipes`);
+        const response = await fetch(`${API_URL}`);
         if (!response.ok) {
           throw new Error(`Erreur réseau: ${response.status}`);
         }

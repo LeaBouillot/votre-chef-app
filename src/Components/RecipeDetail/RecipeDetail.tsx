@@ -17,7 +17,7 @@ interface Details {
   instructions: string[];
 }
 
-const API_URL = "http://localhost:3000";
+const API_URL = "https://recettes-api-olive.vercel.app/api/recettes";
 const RecipeDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [details, setDetails] = useState<Details | null>(null);
@@ -27,7 +27,7 @@ const RecipeDetail = () => {
   const fetchData = useCallback(async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(`${API_URL}/recipes/${id}`);
+      const response = await fetch(`${API_URL}/${id}`);
       if (!response.ok) {
         throw new Error("Failed to fetch recipe details");
       }

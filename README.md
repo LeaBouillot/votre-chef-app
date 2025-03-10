@@ -1,4 +1,6 @@
 # Projet : Application de Recettes de Cuisine
+api: https://recettes-api-olive.vercel.app/api/recettes
+
 
 ## Description Générale
 Cette application permet aux utilisateurs de rechercher, ajouter et consulter des recettes de cuisine. Elle inclut une fonctionnalité pour marquer des recettes comme favorites. Le projet utilise React JS, TypeScript et HTML/CSS avec une architecture modulaire.
